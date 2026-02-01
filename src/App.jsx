@@ -14,11 +14,11 @@ import {
   shaderMaterial
 } from '@react-three/drei';
 import * as THREE from 'three';
-import { travelData } from './data/travelData';
-import LocationPanel from './components/LocationPanel';
-import AdminPanel from './components/AdminPanel';
-import SoundManager from './components/SoundManager';
-import './styles/App.css';
+import { travelData } from './travelData';
+import LocationPanel from './LocationPanel';
+import AdminPanel from './AdminPanel';
+import SoundManager from './SoundManager';
+import './App.css';
 
 // Custom shader for atmospheric glow
 const AtmosphereMaterial = shaderMaterial(
