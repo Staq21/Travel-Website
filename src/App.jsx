@@ -1,16 +1,12 @@
 import React, { useState, useRef, useCallback, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree, extend } from '@react-three/fiber';
-import { 
-  OrbitControls, 
-  Stars, 
-  Html, 
+import {
+  OrbitControls,
+  Stars,
+  Html,
   useTexture,
   Sphere,
   Line,
-  Text,
-  Environment,
-  EffectComposer,
-  Bloom,
   shaderMaterial
 } from '@react-three/drei';
 import * as THREE from 'three';
@@ -198,24 +194,19 @@ function TravelArc({ start, end, color = "#00ff88", animated = true }) {
 // Main Earth globe component
 function Earth({ locations, selectedLocation, onSelectLocation, isAutoRotating }) {
   const earthRef = useRef();
-  const cloudsRef = useRef();
   const { camera } = useThree();
   
   // Load textures
-  const [dayMap, nightMap, normalMap, specularMap, cloudsMap] = useTexture([
+  const [dayMap, nightMap, normalMap, specularMap] = useTexture([
     'https://unpkg.com/three-globe@2.31.1/example/img/earth-blue-marble.jpg',
     'https://unpkg.com/three-globe@2.31.1/example/img/earth-night.jpg',
     'https://unpkg.com/three-globe@2.31.1/example/img/earth-topology.png',
-    'https://unpkg.com/three-globe@2.31.1/example/img/earth-water.png',
-    ''
+    'https://unpkg.com/three-globe@2.31.1/example/img/earth-water.png'
   ]);
 
   useFrame((state, delta) => {
     if (isAutoRotating && earthRef.current) {
       earthRef.current.rotation.y += delta * 0.05;
-    }
-    if (cloudsRef.current) {
-      cloudsRef.current.rotation.y += delta * 0.02;
     }
   });
 
@@ -264,16 +255,6 @@ function Earth({ locations, selectedLocation, onSelectLocation, isAutoRotating }
           transparent
           opacity={0.4}
           blending={THREE.AdditiveBlending}
-        />
-      </Sphere>
-
-      {/* Clouds layer */}
-      <Sphere ref={cloudsRef} args={[2.02, 64, 64]}>
-        <meshPhongMaterial
-          map={cloudsMap}
-          transparent
-          opacity={0.3}
-          depthWrite={false}
         />
       </Sphere>
 
