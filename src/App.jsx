@@ -207,7 +207,7 @@ function Earth({ locations, selectedLocation, onSelectLocation, isAutoRotating }
     'https://unpkg.com/three-globe@2.31.1/example/img/earth-night.jpg',
     'https://unpkg.com/three-globe@2.31.1/example/img/earth-topology.png',
     'https://unpkg.com/three-globe@2.31.1/example/img/earth-water.png',
-    'https://unpkg.com/three-globe@2.31.1/example/img/earth-clouds.png'
+    ''
   ]);
 
   useFrame((state, delta) => {
